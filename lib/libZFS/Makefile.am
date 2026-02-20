@@ -12,6 +12,10 @@ libZFS_la_LIBADD = \
 dist_libZFS_la_SOURCES = \
 	%D%/ZFS.h \
 	%D%/ZFSPool.h \
+	%D%/ZFSProperties.h \
+	%D%/ZFSDataset.h \
+	%D%/ZFSVolume.h \
+	%D%/ZFSException.h \
 	%D%/ZFSPool.cpp
 
 #pkgconfig_DATA += %D%/libZFS.pc

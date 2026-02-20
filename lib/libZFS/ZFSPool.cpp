@@ -22,11 +22,15 @@
 #include "ZFS.h"
 #include "ZFSPool.h"
 
-static libzfs_handle_t *libzfs_handle = libzfs_init();
-static int libzfs_core_init_status = libzfs_core_init();
 
-ZFSPool::~ZFSPool() {
-	fprintf(stderr, "in %s\n", __FUNCTION__);
+ZFSPool::ZFSPool(std::string& name)
+{
+	this->name_ = name;
+	ivar = NULL;
+}
+
+ZFSPool::~ZFSPool()
+{
 	fflush(stderr);
 	free(this->ivar);
 	this->ivar = NULL;

@@ -24,7 +24,7 @@ private:
 	// super private hidden state
 	void *ivar;
 public:
-	ZFSPool(std::string& name) { name_ = name; ivar = NULL; }
+	ZFSPool(std::string& name);
 	~ZFSPool();
 	std::string name() { return name_; }
 	std::map<std::string, std::string> properties(const std::string& name) { return {}; }

@@ -19,6 +19,7 @@ public:
 	// throw an exception on error
 	static std::shared_ptr<ZFSPool> import_pool(const std::string& name) { return {}; }
 	static std::vector<std::map<std::string, std::string>> 	unimported_pools(void) { return {}; }
+	static std::vector<ZFSPool> pools(void);
 	static std::vector<std::string> list_pools(void);
 	static std::string user_version(void);
 	static std::string kernel_version(void);

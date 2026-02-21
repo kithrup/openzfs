@@ -18,15 +18,13 @@ class ZFSPool: public ZFSProperties {
 public:
 	enum class FeatureState { active, enabled, disabled };
 private:
-	std::string name_;
-	std::string uuid_;
-	std::vector<std::shared_ptr<ZFSDataset>> datasets_;
 	// super private hidden state
 	void *ivar;
 public:
-	ZFSPool(std::string& name);
+	// Create a pool from a handle
+	ZFSPool(void *);
 	~ZFSPool();
-	std::string name() { return name_; }
+	std::string name(void);
 	std::map<std::string, std::string> properties(const std::string& name) { return {}; }
 	bool remove_property(std::string& name) { return false; }
 	bool set_property(const std::string& name, const std::string& value) { return false; }

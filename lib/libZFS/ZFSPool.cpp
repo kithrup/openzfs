@@ -22,16 +22,26 @@
 #include "ZFS.h"
 #include "ZFSPool.h"
 
-
-ZFSPool::ZFSPool(std::string& name)
+ZFSPool::ZFSPool(void *ptr)
 {
-	this->name_ = name;
-	ivar = NULL;
+	// ptr is a zpool_handle_t
+	this->ivar = ptr;
 }
 
 ZFSPool::~ZFSPool()
 {
 	fflush(stderr);
-	free(this->ivar);
 	this->ivar = NULL;
+}
+
+static zpool_handle_t *
+handle(void *ptr)
+{
+	return (zpool_handle_t*)ptr;
+}
+
+std::string
+ZFSPool::name(void)
+{
+	return std::string(zpool_get_name(handle(ivar)));
 }

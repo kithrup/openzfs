@@ -20,6 +20,7 @@
 #include <libzutil.h>
 
 #include "ZFS.h"
+#include "ZFSValue.h"
 
 class ZFSPoolInternal {
 private:

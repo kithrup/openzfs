@@ -45,3 +45,9 @@ ZFSPool::name(void)
 {
 	return std::string(zpool_get_name(handle(ivar)));
 }
+
+int
+ZFSPool::state(void)
+{
+	return zpool_get_state(handle(ivar));
+}

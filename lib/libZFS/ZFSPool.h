@@ -24,7 +24,9 @@ public:
 	// Create a pool from a handle
 	ZFSPool(void *);
 	~ZFSPool();
+
 	std::string name(void);
+	int state(void);
 	std::map<std::string, std::string> properties(const std::string& name) { return {}; }
 	bool remove_property(std::string& name) { return false; }
 	bool set_property(const std::string& name, const std::string& value) { return false; }

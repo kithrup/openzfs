@@ -65,7 +65,7 @@ include $(srcdir)/%D%/libzfsbootenv/Makefile.am
 include $(srcdir)/%D%/libzpool/Makefile.am
 include $(srcdir)/%D%/libzstd/Makefile.am
 include $(srcdir)/%D%/libzutil/Makefile.am
-include $(srcdir)/%D%/libZFS/Makefile.am
+include $(srcdir)/%D%/libZFS++/Makefile.am
 if BUILD_LINUX
 include $(srcdir)/%D%/libefi/Makefile.am
 endif

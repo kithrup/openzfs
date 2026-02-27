@@ -11,16 +11,17 @@ class ZFSProperties;
 class ZFSPool;
 class ZFSDataset;
 class ZFSVolume;
+class ZFSValue;
 
 class ZFS {
 private:
 	static void *libzfs_handle(void);
 public:
 	// throw an exception on error
-	static std::shared_ptr<ZFSPool> import_pool(const std::string& name) { return {}; }
+	static std::shared_ptr<ZFSPool> import_pool(const std::string& name,
+	    const std::map<std::string, ZFSValue>&conf, const std::string& alt_roote = nullptr);
 	static std::vector<std::map<std::string, std::string>> 	unimported_pools(void) { return {}; }
 	static std::vector<ZFSPool> pools(void);
-	static std::vector<std::string> list_pools(void);
 	static std::string user_version(void);
 	static std::string kernel_version(void);
 };

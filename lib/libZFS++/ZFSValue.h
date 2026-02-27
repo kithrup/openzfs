@@ -31,30 +31,33 @@ public:
 	};
 
 private:
-enum class ZFSValueType {
-	Integer, Double, String, Array, Dictionary
-	    };
-ZFSValueType vtype;
-int ival;
-double dval;
-std::string sval;
-std::vector<ZFSValue> aval;
-std::map<std::string, ZFSValue> dict;
+	enum class ZFSValueType {
+		Integer, LongInteger, Double, String, Array, Dictionary
+	};
+	ZFSValueType vtype;
+	int ival;
+	unsigned long long i64val;
+	double dval;
+	std::string sval;
+	std::vector<ZFSValue> aval;
+	std::map<std::string, ZFSValue> dict;
 
 public:
-ZFSValue(int);
-ZFSValue(double);
-ZFSValue(std::string);
-ZFSValue(std::vector<ZFSValue>);
-ZFSValue(std::map<std::string, ZFSValue>);
-~ZFSValue() { ; }
-std::string to_string(void);
+	ZFSValue(int);
+	ZFSValue(unsigned long long);
+	ZFSValue(double);
+	ZFSValue(std::string);
+	ZFSValue(std::vector<ZFSValue>);
+	ZFSValue(std::map<std::string, ZFSValue>);
+	~ZFSValue() { ; }
+	std::string to_string(void);
 
-int int_value(void);
-double double_value(void);
-std::string string_value(void);
-std::vector<ZFSValue> array_value(void);
-std::map<std::string, ZFSValue> dictonary_value(void);
+	int int_value(void);
+	unsigned long long long_int_value(void);
+	double double_value(void);
+	std::string string_value(void);
+	std::vector<ZFSValue> array_value(void);
+	std::map<std::string, ZFSValue> dictonary_value(void);
 };		
 
 namespace std {

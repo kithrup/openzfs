@@ -43,6 +43,7 @@ static ZFSPoolInternal internal_state = ZFSPoolInternal();
 void *
 ZFS::libzfs_handle(void)
 {
+	
 	return (void*)internal_state.libzfs_handle_;
 }
 
@@ -63,8 +64,8 @@ ZFS::kernel_version(void)
 static int
 build_pool_list(zpool_handle_t *handle, void *ctx)
 {
-	std::vector<ZFSPool> *list = (std::vector<ZFSPool>*)ctx;
-	list->push_back(ZFSPool(handle));
+	std::vector<void*> *list = (std::vector<void*>*)ctx;
+	list->push_back(handle);
 	return 0;
 }
 
@@ -72,7 +73,21 @@ std::vector<ZFSPool>
 ZFS::pools(void)
 {
 	std::vector<ZFSPool> retval;
+	std::vector<void*> handle_list;
 	int rv = zpool_iter(internal_state.libzfs_handle_,
-	    &build_pool_list, (void*)&retval);
+	    &build_pool_list, (void*)&handle_list);
+	for (void* elem: handle_list) {
+		zpool_handle_t *h = (zpool_handle_t*)elem;
+		retval.push_back(ZFSPool(h));
+	}
 	return retval;
+}
+
+std::shared_ptr<ZFSPool>
+ZFS::import_pool(const std::string& name,
+    const std::map<std::string, ZFSValue>& conf,
+    const std::string& alt_root)
+{
+	auto handle = libzfs_handle();
+	return {};
 }

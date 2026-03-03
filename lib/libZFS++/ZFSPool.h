@@ -15,8 +15,6 @@
 
 	
 class ZFSPool: public ZFSProperties {
-public:
-	enum class FeatureState { active, enabled, disabled };
 private:
 	// super private hidden state (actually a zpool_handle_t*).
 	void *ivar;
@@ -24,8 +22,7 @@ private:
 	friend class ZFS;
 	ZFSPool(void*);
 public:
-	// Create a pool from a handle
-	ZFSPool();
+	enum class FeatureState { active, enabled, disabled };
 	~ZFSPool();
 
 	std::string name(void);

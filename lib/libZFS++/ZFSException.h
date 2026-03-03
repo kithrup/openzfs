@@ -5,10 +5,13 @@
 #include <exception>
 
 class ZFSException: public std::exception {
+private:
+	std::string msg;
 public:
-	ZFSException() {}
+	ZFSException(int c) : msg("ZFS Exception " + std::to_string(c)) {}
+	ZFSException(): msg("ZFS Exception") {}
 	const char *what() const noexcept override {
-		return "ZFS Exception";
+		return msg.c_str();
 	}
 };
 

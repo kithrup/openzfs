@@ -13,6 +13,7 @@
 #include <memory>
 
 #include "ZFS.h"
+#include "ZFSValue.h"
 
 /*
  * In Swift/ObjC, these would be protocols; in Rust, they'd be
@@ -20,7 +21,7 @@
  */
 class ZFSProperties {
 public:
-	virtual std::map<std::string, std::string> properties(const std::string& name = {}) = 0;
+	virtual std::map<std::string, ZFSValue> properties(const std::string& name = {}) = 0;
 	virtual bool remove_property(std::string&) = 0;
 	virtual bool set_property(const std::string& name, const std::string& value) = 0;
 };

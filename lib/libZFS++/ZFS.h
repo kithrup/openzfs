@@ -16,6 +16,7 @@ class ZFSValue;
 class ZFS {
 private:
 	static void *libzfs_handle(void);
+	friend class ZFSPool;
 public:
 	// throw an exception on error
 	static std::shared_ptr<ZFSPool> import_pool(const std::string& name,
